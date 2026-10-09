@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pesanan - Dapur Nia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="pesanan.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="chef-hat"></i>
+            </div>
+
+            <div>
+                <h2>Dapur Nia</h2>
+                <span>Catering Management</span>
+            </div>
+        </div>
+
+        <nav class="menu-nav">
+
+            <a href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="menu.html">
+                <i data-lucide="utensils"></i>
+                <span>Menu</span>
+            </a>
+
+            <a href="pelanggan.html">
+                <i data-lucide="users"></i>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="pesanan.html" class="active">
+                <i data-lucide="shopping-bag"></i>
+                <span>Pesanan</span>
+            </a>
+
+            <a href="#">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Laporan</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-box">
+                <i data-lucide="help-circle"></i>
+
+                <div>
+                    <strong>Butuh bantuan?</strong>
+                    <small>Hubungi administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div></div>
+
+            <div class="profile">
+
+                <div class="profile-avatar" id="profileAvatar">
+                    A
+                </div>
+
+                <div class="profile-info">
+                    <strong>Admin Dapur Nia</strong>
+                    <span>Administrator</span>
+                </div>
+
+                <button id="logoutBtn" class="logout-btn" title="Logout">
+                    <i data-lucide="log-out"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="page-header">
+
+                <div>
+                    <span class="eyebrow">TRANSAKSI</span>
+                    <h1>Pesanan</h1>
+                    <p>Kelola pesanan pelanggan dan hitung total secara otomatis.</p>
+                </div>
+
+                <button id="openOrderBtn" class="primary-btn">
+                    <i data-lucide="plus"></i>
+                    Pesanan Baru
+                </button>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i data-lucide="shopping-bag"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pesanan</span>
+                        <strong id="totalOrders">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i data-lucide="clock-3"></i>
+                    </div>
+
+                    <div>
+                        <span>Menunggu Bayar</span>
+                        <strong id="pendingOrders">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+
+                    <div>
+                        <span>Pesanan Selesai</span>
+                        <strong id="completedOrders">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i data-lucide="wallet"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pendapatan</span>
+                        <strong id="totalRevenue">Rp0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>Daftar Pesanan</h3>
+                        <p>Data transaksi pelanggan Dapur Nia</p>
+                    </div>
+
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari pesanan..."
+                        >
+                    </div>
+
+                </div>
+
+
+                <div id="loadingState" class="loading">
+                    Memuat data pesanan...
+                </div>
+
+
+                <div id="emptyState" class="empty-state" style="display:none;">
+                    <i data-lucide="shopping-bag"></i>
+                    <h3>Belum ada pesanan</h3>
+                    <p>Tambahkan pesanan baru untuk mulai mencatat transaksi.</p>
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table id="orderTable">
+
+                        <thead>
+                            <tr>
+                                <th>Pelanggan</th>
+                                <th>Menu</th>
+                                <th>Jumlah</th>
+                                <th>Total</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="orderTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL PESANAN -->
+<div class="modal-overlay" id="orderModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="eyebrow">TRANSAKSI BARU</span>
+                <h2>Buat Pesanan</h2>
+            </div>
+
+            <button class="close-btn" id="closeModal">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="orderForm">
+
+            <!-- PELANGGAN -->
+            <div class="form-group">
+
+                <label for="customerSelect">
+                    Pelanggan
+                </label>
+
+                <select id="customerSelect" required>
+
+                    <option value="">
+                        Pilih pelanggan
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="customer-info" id="customerInfo">
+
+                <div>
+                    <span>WhatsApp</span>
+                    <strong id="customerWhatsapp">-</strong>
+                </div>
+
+                <div>
+                    <span>Alamat</span>
+                    <strong id="customerAddress">-</strong>
+                </div>
+
+            </div>
+
+
+            <!-- MENU -->
+            <div class="form-group">
+
+                <label for="menuSelect">
+                    Menu
+                </label>
+
+                <select id="menuSelect" required>
+
+                    <option value="">
+                        Pilih menu
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- MENU INFO -->
+            <div class="menu-info" id="menuInfo">
+
+                <div>
+                    <span>Harga / Porsi</span>
+                    <strong id="menuPrice">Rp0</strong>
+                </div>
+
+                <div>
+                    <span>Sisa Porsi</span>
+                    <strong id="menuStock">0</strong>
+                </div>
+
+            </div>
+
+
+            <!-- JUMLAH -->
+            <div class="form-group">
+
+                <label for="quantity">
+                    Jumlah Porsi
+                </label>
+
+                <div class="quantity-control">
+
+                    <button type="button" id="minusBtn">
+                        −
+                    </button>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                    <button type="button" id="plusBtn">
+                        +
+                    </button>
+
+                </div>
+
+                <small id="stockWarning"></small>
+
+            </div>
+
+
+            <!-- ONGKIR -->
+            <div class="form-group">
+
+                <label for="shipping">
+                    Ongkir
+                </label>
+
+                <div class="input-money">
+
+                    <span>Rp</span>
+
+                    <input
+                        type="number"
+                        id="shipping"
+                        min="0"
+                        value="0"
+                        placeholder="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- RINGKASAN -->
+            <div class="order-summary">
+
+                <div>
+                    <span>Subtotal</span>
+                    <strong id="subtotal">Rp0</strong>
+                </div>
+
+                <div>
+                    <span>Ongkir</span>
+                    <strong id="shippingDisplay">Rp0</strong>
+                </div>
+
+                <div class="grand-total">
+                    <span>Total</span>
+                    <strong id="grandTotal">Rp0</strong>
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+            <div class="form-group">
+
+                <label for="status">
+                    Status Pesanan
+                </label>
+
+                <select id="status">
+
+                    <option value="menunggu_bayar">
+                        Menunggu Bayar
+                    </option>
+
+                    <option value="dibayar">
+                        Dibayar
+                    </option>
+
+                    <option value="diproses">
+                        Diproses
+                    </option>
+
+                    <option value="selesai">
+                        Selesai
+                    </option>
+
+                    <option value="dibatalkan">
+                        Dibatalkan
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelBtn"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                    id="saveOrderBtn"
+                >
+                    <i data-lucide="save"></i>
+                    Simpan Pesanan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="pesanan.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

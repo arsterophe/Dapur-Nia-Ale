@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dapur Nia — Menu</title>
+
+    <link rel="stylesheet" href="menu.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="chef-hat"></i>
+            </div>
+
+            <div>
+                <h1>Dapur Nia</h1>
+                <span>Daily Catering</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-label">MENU UTAMA</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="menu.html" class="nav-item active">
+                <i data-lucide="utensils"></i>
+                <span>Menu</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="users"></i>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="shopping-bag"></i>
+                <span>Pesanan</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="chart-no-axes-combined"></i>
+                <span>Laporan</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-note">
+                <span class="note-icon">🍊</span>
+
+                <div>
+                    <strong>Semangat!</strong>
+                    <p>Jaga dapur tetap berjalan.</p>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i data-lucide="log-out"></i>
+                Keluar
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <div class="brand-icon small">
+                    <i data-lucide="chef-hat"></i>
+                </div>
+
+                <strong>Dapur Nia</strong>
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn">
+                    <i data-lucide="bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar" id="profileAvatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong id="profileName">User</strong>
+                        <small>Pengelola</small>
+                    </div>
+
+                    <i data-lucide="chevron-down" class="chevron"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="menu-content">
+
+            <!-- PAGE HEADER -->
+            <section class="page-header">
+
+                <div>
+                    <span class="section-kicker">
+                        KELOLA DAPUR
+                    </span>
+
+                    <h1>Menu Makanan</h1>
+
+                    <p>
+                        Kelola nama menu, harga, stok, dan ketersediaan
+                        makanan Dapur Nia.
+                    </p>
+                </div>
+
+                <button class="primary-btn" id="addMenuBtn">
+                    <i data-lucide="plus"></i>
+                    Tambah Menu
+                </button>
+
+            </section>
+
+
+            <!-- SUMMARY -->
+            <section class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i data-lucide="utensils"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Menu</span>
+                        <strong id="totalMenu">0</strong>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon green">
+                        <i data-lucide="circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Menu Tersedia</span>
+                        <strong id="availableMenu">0</strong>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon orange">
+                        <i data-lucide="package"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Porsi</span>
+                        <strong id="totalStock">0</strong>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- MENU TABLE -->
+            <section class="menu-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            DAFTAR MENU
+                        </span>
+
+                        <h2>Menu Dapur Nia</h2>
+                    </div>
+
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input
+                            type="text"
+                            id="searchMenu"
+                            placeholder="Cari menu..."
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- Loading -->
+                <div class="loading-state" id="loadingState">
+                    <i data-lucide="loader-circle"></i>
+                    <p>Memuat data menu...</p>
+                </div>
+
+
+                <!-- Empty -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-icon">
+                        <i data-lucide="utensils"></i>
+                    </div>
+
+                    <h3>Belum ada menu</h3>
+
+                    <p>
+                        Tambahkan menu pertama Dapur Nia.
+                    </p>
+                </div>
+
+
+                <!-- Table -->
+                <div class="table-wrapper" id="tableWrapper" style="display: none;">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>MENU</th>
+                                <th>HARGA</th>
+                                <th>SISA PORSI</th>
+                                <th>STATUS</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="menuTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL TAMBAH / EDIT -->
+<div class="modal-overlay" id="menuModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="section-kicker">
+                    DATA MENU
+                </span>
+
+                <h2 id="modalTitle">Tambah Menu</h2>
+            </div>
+
+            <button class="close-btn" id="closeModalBtn">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="menuForm">
+
+            <div class="form-group">
+                <label for="menuName">
+                    Nama Menu
+                </label>
+
+                <input
+                    type="text"
+                    id="menuName"
+                    placeholder="Contoh: Nasi Ayam Bakar"
+                    maxlength="60"
+                    required
+                >
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="menuPrice">
+                        Harga
+                    </label>
+
+                    <input
+                        type="number"
+                        id="menuPrice"
+                        placeholder="25000"
+                        min="0"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="menuStock">
+                        Sisa Porsi
+                    </label>
+
+                    <input
+                        type="number"
+                        id="menuStock"
+                        placeholder="30"
+                        min="0"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label class="switch-label">
+                    <span>
+                        Menu tersedia
+                    </span>
+
+                    <input
+                        type="checkbox"
+                        id="menuAvailable"
+                        checked
+                    >
+
+                    <span class="switch"></span>
+                </label>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelModalBtn"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    <i data-lucide="save"></i>
+                    Simpan Menu
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="menu.js"></script>
+
+</body>
+</html>

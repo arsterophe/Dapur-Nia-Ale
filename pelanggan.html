@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dapur Nia — Pelanggan</title>
+
+    <link rel="stylesheet" href="pelanggan.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="chef-hat"></i>
+            </div>
+
+            <div>
+                <h1>Dapur Nia</h1>
+                <span>Daily Catering</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-label">MENU UTAMA</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="menu.html" class="nav-item">
+                <i data-lucide="utensils"></i>
+                <span>Menu</span>
+            </a>
+
+            <a href="pelanggan.html" class="nav-item active">
+                <i data-lucide="users"></i>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="shopping-bag"></i>
+                <span>Pesanan</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="chart-no-axes-combined"></i>
+                <span>Laporan</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-note">
+                <span class="note-icon">🍊</span>
+
+                <div>
+                    <strong>Semangat!</strong>
+                    <p>Jaga dapur tetap berjalan.</p>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i data-lucide="log-out"></i>
+                Keluar
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <div class="brand-icon small">
+                    <i data-lucide="chef-hat"></i>
+                </div>
+
+                <strong>Dapur Nia</strong>
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn">
+                    <i data-lucide="bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar" id="profileAvatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong id="profileName">User</strong>
+                        <small>Pengelola</small>
+                    </div>
+
+                    <i data-lucide="chevron-down" class="chevron"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="customer-content">
+
+            <!-- HEADER -->
+            <section class="page-header">
+
+                <div>
+                    <span class="section-kicker">
+                        KELOLA PELANGGAN
+                    </span>
+
+                    <h1>Data Pelanggan</h1>
+
+                    <p>
+                        Simpan dan kelola informasi pelanggan
+                        Dapur Nia dengan mudah.
+                    </p>
+                </div>
+
+                <button class="primary-btn" id="addCustomerBtn">
+                    <i data-lucide="plus"></i>
+                    Tambah Pelanggan
+                </button>
+
+            </section>
+
+
+            <!-- SUMMARY -->
+            <section class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pelanggan</span>
+                        <strong id="totalCustomer">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon green">
+                        <i data-lucide="user-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Pelanggan Terdaftar</span>
+                        <strong id="registeredCustomer">0</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CUSTOMER PANEL -->
+            <section class="customer-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            DAFTAR PELANGGAN
+                        </span>
+
+                        <h2>Pelanggan Dapur Nia</h2>
+                    </div>
+
+                    <div class="search-box">
+
+                        <i data-lucide="search"></i>
+
+                        <input
+                            type="text"
+                            id="searchCustomer"
+                            placeholder="Cari nama / WhatsApp..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOADING -->
+                <div class="loading-state" id="loadingState">
+
+                    <i data-lucide="loader-circle"></i>
+
+                    <p>
+                        Memuat data pelanggan...
+                    </p>
+
+                </div>
+
+
+                <!-- EMPTY -->
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    style="display: none;"
+                >
+
+                    <div class="empty-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <h3>Belum ada pelanggan</h3>
+
+                    <p>
+                        Tambahkan pelanggan pertama Dapur Nia.
+                    </p>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div
+                    class="table-wrapper"
+                    id="tableWrapper"
+                    style="display: none;"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>PELANGGAN</th>
+                                <th>WHATSAPP</th>
+                                <th>ALAMAT</th>
+                                <th>AKSI</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="customerTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="customerModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    DATA PELANGGAN
+                </span>
+
+                <h2 id="modalTitle">
+                    Tambah Pelanggan
+                </h2>
+
+            </div>
+
+            <button class="close-btn" id="closeModalBtn">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <div class="form-group">
+
+                <label for="customerName">
+                    Nama Pelanggan
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Contoh: Budi Santoso"
+                    maxlength="100"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerWhatsapp">
+                    Nomor WhatsApp
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerWhatsapp"
+                    placeholder="081234567890"
+                    maxlength="13"
+                    required
+                >
+
+                <small>
+                    Format: 08xxxxxxxxxx
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerAddress">
+                    Alamat
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="Masukkan alamat lengkap pelanggan..."
+                    maxlength="200"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelModalBtn"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    <i data-lucide="save"></i>
+                    Simpan Pelanggan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="pelanggan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dapur Nia — Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar">
+
+            <!-- BRAND -->
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <i data-lucide="chef-hat"></i>
+                </div>
+
+                <div>
+                    <h1>Dapur Nia</h1>
+                    <span>Daily Catering</span>
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">MENU UTAMA</p>
+
+                <!-- DASHBOARD -->
+                <a
+                    href="dashboard.html"
+                    class="nav-item active"
+                    data-page="dashboard"
+                    id="navDashboard"
+                >
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <!-- MENU -->
+                <a
+                    href="menu.html"
+                    class="nav-item"
+                    data-page="menu"
+                    id="navMenu"
+                >
+                    <i data-lucide="utensils"></i>
+                    <span>Menu</span>
+                </a>
+
+
+                <!-- PELANGGAN -->
+                <a
+                    href="pelanggan.html"
+                    class="nav-item"
+                    data-page="pelanggan"
+                    id="navPelanggan"
+                >
+                    <i data-lucide="users"></i>
+                    <span>Pelanggan</span>
+                </a>
+
+
+                <!-- PESANAN -->
+                <a
+                    href="pesanan.html"
+                    class="nav-item"
+                    data-page="pesanan"
+                    id="navPesanan"
+                >
+                    <i data-lucide="shopping-bag"></i>
+                    <span>Pesanan</span>
+                </a>
+
+
+                <!-- LAPORAN -->
+                <a
+                    href="laporan.html"
+                    class="nav-item"
+                    data-page="laporan"
+                    id="navLaporan"
+                >
+                    <i data-lucide="chart-no-axes-combined"></i>
+                    <span>Laporan</span>
+                </a>
+
+            </nav>
+
+
+            <!-- =================================================
+                 SIDEBAR BOTTOM
+            ================================================== -->
+
+            <div class="sidebar-bottom">
+
+                <div class="mini-note">
+
+                    <span class="note-icon">🍊</span>
+
+                    <div>
+                        <strong>Semangat!</strong>
+
+                        <p>
+                            Jaga dapur tetap berjalan.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <button
+                    class="logout-btn"
+                    id="logoutBtn"
+                    type="button"
+                >
+
+                    <i data-lucide="log-out"></i>
+
+                    Keluar
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+
+                    <div class="brand-icon small">
+                        <i data-lucide="chef-hat"></i>
+                    </div>
+
+                    <strong>Dapur Nia</strong>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button
+                        class="notification-btn"
+                        type="button"
+                    >
+                        <i data-lucide="bell"></i>
+                        <span></span>
+                    </button>
+
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            A
+                        </div>
+
+                        <div class="profile-info">
+
+                            <strong id="profileName">
+                                User
+                            </strong>
+
+                            <small>
+                                Pengelola
+                            </smalE:\BOTCAMP\-Dapur Nia>
+
+                        </div>
+
+                        <i
+                            data-lucide="chevron-down"
+                            class="chevron"
+                        ></i>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 DASHBOARD CONTENT
+            ================================================== -->
+
+            <section class="dashboard-content">
+
+
+                <!-- =================================================
+                     HERO
+                ================================================== -->
+
+                <section class="hero">
+
+                    <div class="hero-content">
+
+                        <span class="eyebrow">
+
+                            <span class="eyebrow-dot"></span>
+
+                            DASHBOARD DAPUR
+
+                        </span>
+
+
+                        <h1 id="welcomeTitle">
+                            Selamat datang kembali! 👋
+                        </h1>
+
+
+                        <p>
+                            Kelola menu, pelanggan, dan pesanan
+                            Dapur Nia dengan lebih mudah hari ini.
+                        </p>
+
+
+                        <!-- BUAT PESANAN -->
+
+                        <button
+                            class="primary-btn"
+                            id="createOrderBtn"
+                            type="button"
+                        >
+
+                            <i data-lucide="plus"></i>
+
+                            Buat Pesanan
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- HERO DECORATION -->
+
+                    <div class="hero-decoration">
+
+                        <div class="sun-shape"></div>
+
+                        <div class="food-card food-card-one">
+                            🍱
+                        </div>
+
+                        <div class="food-card food-card-two">
+                            🥗
+                        </div>
+
+                        <div class="leaf leaf-one">
+                            ✦
+                        </div>
+
+                        <div class="leaf leaf-two">
+                            ✦
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     STATISTICS
+                ================================================== -->
+
+                <section class="stats-grid">
+
+
+                    <!-- PESANAN HARI INI -->
+
+                    <div class="stat-card sage-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i data-lucide="shopping-bag"></i>
+                            </div>
+
+                            <span class="trend positive">
+                                +12%
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Pesanan Hari Ini
+                        </p>
+
+                        <h3 id="todayOrders">
+                            0
+                        </h3>
+
+                        <span class="stat-description">
+                            dari seluruh pesanan
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- MENU TERSEDIA -->
+
+                    <div class="stat-card cream-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon orange-icon">
+                                <i data-lucide="utensils"></i>
+                            </div>
+
+                            <span class="small-status">
+                                Aktif
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Menu Tersedia
+                        </p>
+
+                        <h3 id="availableMenus">
+                            0
+                        </h3>
+
+                        <span class="stat-description">
+                            menu hari ini
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- MENUNGGU PEMBAYARAN -->
+
+                    <div class="stat-card yellow-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon yellow-icon">
+                                <i data-lucide="clock-3"></i>
+                            </div>
+
+                            <span class="small-status waiting">
+                                Perlu cek
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Menunggu Pembayaran
+                        </p>
+
+                        <h3 id="pendingOrders">
+                            0
+                        </h3>
+
+                        <span class="stat-description">
+                            pesanan perlu diproses
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- TOTAL PENDAPATAN -->
+
+                    <div class="stat-card orange-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i data-lucide="wallet"></i>
+                            </div>
+
+                            <span class="trend positive dark">
+                                Hari ini
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Total Pendapatan
+                        </p>
+
+                        <h3 id="totalRevenue">
+                            Rp0
+                        </h3>
+
+                        <span class="stat-description">
+                            dari pesanan selesai
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     QUICK ACCESS
+                ================================================== -->
+
+                <section class="section-heading">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            KELOLA DAPUR
+                        </span>
+
+                        <h3>
+                            Semua yang kamu butuhkan
+                        </h3>
+
+                    </div>
+
+                    <span class="section-caption">
+                        Pilih aktivitas untuk mulai
+                    </span>
+
+                </section>
+
+
+
+                <section class="feature-grid">
+
+
+                    <!-- MENU -->
+
+                    <a
+                        href="menu.html"
+                        class="feature-card menu-feature"
+                        id="featureMenu"
+                    >
+
+                        <div class="feature-icon">
+                            <i data-lucide="utensils"></i>
+                        </div>
+
+                        <div class="feature-text">
+
+                            <span class="feature-number">
+                                01
+                            </span>
+
+                            <h4>
+                                Menu
+                            </h4>
+
+                            <p>
+                                Kelola menu, harga,
+                                stok, dan ketersediaan.
+                            </p>
+
+                            <span class="feature-link">
+
+                                Kelola menu
+
+                                <i data-lucide="arrow-up-right"></i>
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PELANGGAN -->
+
+                    <a
+                        href="pelanggan.html"
+                        class="feature-card customer-feature"
+                        id="featurePelanggan"
+                    >
+
+                        <div class="feature-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+
+                        <div class="feature-text">
+
+                            <span class="feature-number">
+                                02
+                            </span>
+
+                            <h4>
+                                Pelanggan
+                            </h4>
+
+                            <p>
+                                Simpan nama, WhatsApp,
+                                dan alamat pelanggan.
+                            </p>
+
+                            <span class="feature-link">
+
+                                Lihat pelanggan
+
+                                <i data-lucide="arrow-up-right"></i>
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PESANAN -->
+
+                    <a
+                        href="pesanan.html"
+                        class="feature-card order-feature"
+                        id="featurePesanan"
+                    >
+
+                        <div class="feature-icon">
+                            <i data-lucide="shopping-bag"></i>
+                        </div>
+
+                        <div class="feature-text">
+
+                            <span class="feature-number">
+                                03
+                            </span>
+
+                            <h4>
+                                Pesanan
+                            </h4>
+
+                            <p>
+                                Pantau pesanan, pembayaran,
+                                dan status pengiriman.
+                            </p>
+
+                            <span class="feature-link">
+
+                                Kelola pesanan
+
+                                <i data-lucide="arrow-up-right"></i>
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- LAPORAN -->
+
+                    <a
+                        href="laporan.html"
+                        class="feature-card report-feature"
+                        id="featureLaporan"
+                    >
+
+                        <div class="feature-icon">
+                            <i data-lucide="chart-no-axes-combined"></i>
+                        </div>
+
+                        <div class="feature-text">
+
+                            <span class="feature-number">
+                                04
+                            </span>
+
+                            <h4>
+                                Laporan
+                            </h4>
+
+                            <p>
+                                Lihat porsi terjual dan
+                                uang masuk setiap hari.
+                            </p>
+
+                            <span class="feature-link">
+
+                                Lihat laporan
+
+                                <i data-lucide="arrow-up-right"></i>
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     BOTTOM AREA
+                ================================================== -->
+
+                <section class="bottom-grid">
+
+
+                    <!-- PESANAN TERBARU -->
+
+                    <div class="recent-orders">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <span class="section-kicker">
+                                    PESANAN TERBARU
+                                </span>
+
+                                <h3>
+                                    Aktivitas hari ini
+                                </h3>
+
+                            </div>
+
+
+                            <a href="pesanan.html">
+
+                                Lihat semua
+
+                                <i data-lucide="arrow-right"></i>
+
+                            </a>
+
+                        </div>
+
+
+                        <div class="order-list">
+
+                            <div class="order-row">
+
+                                <div class="order-avatar">
+                                    BS
+                                </div>
+
+                                <div class="order-info">
+
+                                    <strong>
+                                        Budi Santoso
+                                    </strong>
+
+                                    <span>
+                                        Nasi Ayam Bakar · 2 porsi
+                                    </span>
+
+                                </div>
+
+                                <div class="order-price">
+
+                                    <strong>
+                                        Rp55.000
+                                    </strong>
+
+                                    <span class="badge waiting-badge">
+                                        Menunggu
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="order-row">
+
+                                <div class="order-avatar orange-avatar">
+                                    RA
+                                </div>
+
+                                <div class="order-info">
+
+                                    <strong>
+                                        Rina Amelia
+                                    </strong>
+
+                                    <span>
+                                        Ayam Geprek · 1 porsi
+                                    </span>
+
+                                </div>
+
+                                <div class="order-price">
+
+                                    <strong>
+                                        Rp30.000
+                                    </strong>
+
+                                    <span class="badge paid-badge">
+                                        Dibayar
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="order-row">
+
+                                <div class="order-avatar yellow-avatar">
+                                    DN
+                                </div>
+
+                                <div class="order-info">
+
+                                    <strong>
+                                        Dewi Nur
+                                    </strong>
+
+                                    <span>
+                                        Rice Bowl · 3 porsi
+                                    </span>
+
+                                </div>
+
+                                <div class="order-price">
+
+                                    <strong>
+                                        Rp75.000
+                                    </strong>
+
+                                    <span class="badge process-badge">
+                                        Diproses
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- KITCHEN STATUS -->
+
+                    <div class="kitchen-card">
+
+                        <div class="kitchen-top">
+
+                            <div>
+
+                                <span class="section-kicker">
+                                    DAPUR HARI INI
+                                </span>
+
+                                <h3>
+                                    Kesiapan menu
+                                </h3>
+
+                            </div>
+
+                            <span class="kitchen-icon">
+                                🍳
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Nasi Ayam Bakar
+                                </span>
+
+                                <strong>
+                                    24 / 30
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+                                <span style="width: 80%"></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Ayam Geprek
+                                </span>
+
+                                <strong>
+                                    12 / 20
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+                                <span style="width: 60%"></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-label">
+
+                                <span>
+                                    Rice Bowl
+                                </span>
+
+                                <strong>
+                                    18 / 20
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+                                <span style="width: 90%"></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="kitchen-message">
+
+                            <span>
+                                💡
+                            </span>
+
+                            <p>
+                                Rice Bowl hampir habis.
+                                Pertimbangkan menambah stok.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
+    <script type="module" src="dashboard.js"></script>
+
+
+    <!-- =====================================================
+         NAVIGATION FIX
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /*
+             * NAVIGASI SIDEBAR
+             * Setiap tombol diarahkan ke file masing-masing.
+             */
+
+            const navigation = {
+
+                navDashboard: "dashboard.html",
+
+                navMenu: "menu.html",
+
+                navPelanggan: "pelanggan.html",
+
+                navPesanan: "pesanan.html",
+
+                navLaporan: "laporan.html"
+
+            };
+
+
+            Object.keys(navigation).forEach(function (id) {
+
+                const element = document.getElementById(id);
+
+                if (!element) return;
+
+
+                element.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    window.location.href = navigation[id];
+
+                });
+
+            });
+
+
+
+            /*
+             * TOMBOL BUAT PESANAN
+             */
+
+            const createOrderBtn =
+                document.getElementById("createOrderBtn");
+
+
+            if (createOrderBtn) {
+
+                createOrderBtn.addEventListener("click", function () {
+
+                    window.location.href = "pesanan.html";
+
+                });
+
+            }
+
+
+
+            /*
+             * QUICK ACCESS
+             */
+
+            const featureMenu =
+                document.getElementById("featureMenu");
+
+            const featurePelanggan =
+                document.getElementById("featurePelanggan");
+
+            const featurePesanan =
+                document.getElementById("featurePesanan");
+
+            const featureLaporan =
+                document.getElementById("featureLaporan");
+
+
+
+            if (featureMenu) {
+
+                featureMenu.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    window.location.href = "menu.html";
+
+                });
+
+            }
+
+
+
+            if (featurePelanggan) {
+
+                featurePelanggan.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    window.location.href = "pelanggan.html";
+
+                });
+
+            }
+
+
+
+            if (featurePesanan) {
+
+                featurePesanan.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    window.location.href = "pesanan.html";
+
+                });
+
+            }
+
+
+
+            if (featureLaporan) {
+
+                featureLaporan.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    window.location.href = "laporan.html";
+
+                });
+
+            }
+
+
+
+            /*
+             * ICON LUCIDE
+             */
+
+            if (typeof lucide !== "undefined") {
+
+                lucide.createIcons();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

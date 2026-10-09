@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laporan - Dapur Nia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="laporan.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i data-lucide="chef-hat"></i>
+            </div>
+
+            <div>
+                <h2>Dapur Nia</h2>
+                <span>Catering Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu-nav">
+
+            <a href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="menu.html">
+                <i data-lucide="utensils"></i>
+                <span>Menu</span>
+            </a>
+
+            <a href="pelanggan.html">
+                <i data-lucide="users"></i>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="pesanan.html">
+                <i data-lucide="shopping-bag"></i>
+                <span>Pesanan</span>
+            </a>
+
+            <a href="laporan.html" class="active">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Laporan</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="help-box">
+
+                <i data-lucide="help-circle"></i>
+
+                <div>
+                    <strong>Butuh bantuan?</strong>
+                    <small>Hubungi administrator</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div></div>
+
+            <div class="profile">
+
+                <div class="profile-avatar" id="profileAvatar">
+                    A
+                </div>
+
+                <div class="profile-info">
+                    <strong>Admin Dapur Nia</strong>
+                    <span>Administrator</span>
+                </div>
+
+                <button id="logoutBtn" class="logout-btn">
+                    <i data-lucide="log-out"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="page-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ANALISIS BISNIS
+                    </span>
+
+                    <h1>Laporan</h1>
+
+                    <p>
+                        Pantau transaksi dan pendapatan Dapur Nia.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER -->
+            <div class="filter-card">
+
+                <div class="filter-title">
+
+                    <div class="filter-icon">
+                        <i data-lucide="calendar"></i>
+                    </div>
+
+                    <div>
+                        <strong>Filter Periode</strong>
+                        <span>Pilih rentang tanggal laporan</span>
+                    </div>
+
+                </div>
+
+
+                <div class="date-fields">
+
+                    <div>
+                        <label for="startDate">
+                            Dari
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                        >
+                    </div>
+
+
+                    <div>
+                        <label for="endDate">
+                            Sampai
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                        >
+                    </div>
+
+
+                    <button
+                        id="filterBtn"
+                        class="primary-btn"
+                    >
+                        <i data-lucide="filter"></i>
+                        Terapkan
+                    </button>
+
+
+                    <button
+                        id="resetFilterBtn"
+                        class="secondary-btn"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i data-lucide="wallet"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pendapatan</span>
+                        <strong id="totalRevenue">
+                            Rp0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i data-lucide="shopping-bag"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Pesanan</span>
+                        <strong id="totalOrders">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i data-lucide="utensils"></i>
+                    </div>
+
+                    <div>
+                        <span>Porsi Terjual</span>
+                        <strong id="totalPortions">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+
+                    <div>
+                        <span>Pesanan Selesai</span>
+                        <strong id="completedOrders">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>Rekap Pesanan</h3>
+
+                        <p id="reportDescription">
+                            Menampilkan seluruh transaksi
+                        </p>
+                    </div>
+
+                    <div class="search-box">
+
+                        <i data-lucide="search"></i>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari pelanggan atau menu..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="loadingState"
+                    class="loading"
+                >
+                    Memuat laporan...
+                </div>
+
+
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                    style="display:none;"
+                >
+
+                    <i data-lucide="bar-chart-3"></i>
+
+                    <h3>
+                        Belum ada data laporan
+                    </h3>
+
+                    <p>
+                        Belum ada transaksi pada periode yang dipilih.
+                    </p>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table id="reportTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Pelanggan
+                                </th>
+
+                                <th>
+                                    Menu
+                                </th>
+
+                                <th>
+                                    Porsi
+                                </th>
+
+                                <th>
+                                    Ongkir
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="reportTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script type="module" src="laporan.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
